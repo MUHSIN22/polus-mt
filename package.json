@@ -9,11 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@reduxjs/toolkit": "^1.9.6",
+    "framer-motion": "^10.16.4",
+    "immer": "^10.0.2",
     "next": "13.5.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
+    "react-redux": "^8.1.2"
   },
   "devDependencies": {
+    "@types/node": "20.7.1",
+    "@types/react": "18.2.23",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.3"
   }
