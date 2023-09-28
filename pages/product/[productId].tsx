@@ -6,7 +6,6 @@ import { useAppSelector } from "../../globalRedux/store";
 import { dataFetcher } from "../../utils/dataFetcher/dataFetcher";
 
 export default function ProductDetail({ product }: { product: IProduct }) {
-  const { id, title, image, category, description, price } = product;
 
   const [totalCount, setTotalCount] = useState<number>(0);
 
@@ -14,10 +13,10 @@ export default function ProductDetail({ product }: { product: IProduct }) {
 
   useMemo(() => {
     if (cart) {
-      const selected = cart?.filter((item) => item.id === id);
+      const selected = cart?.filter((item) => item.id === product?.id);
       setTotalCount(selected?.[0]?.count || 0);
     }
-  }, [cart, id]);
+  }, [cart, product?.id]);
 
   return (
     <Center w="100%" p={4}>
@@ -26,21 +25,21 @@ export default function ProductDetail({ product }: { product: IProduct }) {
         templateColumns={{ base: "1fr", sm: "10rem auto" }}
         gap={8}
       >
-        <Image src={image} w="100%" h="auto" alt={title} />
+        <Image src={product?.image} w="100%" h="auto" alt={product?.title} />
         <VStack alignItems="flex-start">
-          <Heading variant="cardTitle">{title}</Heading>
+          <Heading variant="cardTitle">{product?.title}</Heading>
           <Text
             variant="description"
             fontWeight={600}
             textTransform="capitalize"
           >
-            {category}
+            {product?.category}
           </Text>
           <Text variant="description" noOfLines={2} fontStyle="italic">
-            {description}
+            {product?.description}
           </Text>
           <Text variant="description" fontWeight={600}>
-            ${price}
+            ${product?.price}
           </Text>
           <QuantityChanger count={totalCount} data={product} />
         </VStack>
