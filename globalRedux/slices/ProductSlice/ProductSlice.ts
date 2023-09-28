@@ -4,7 +4,8 @@ import { IProduct } from "../../../types/pages/products.types";
 import { count } from "console";
 
 const initialState: IProductRootState = {
-    cart: []
+    cart: [],
+    searchQuery: ''
 }
 
 const productSlice = createSlice({
@@ -42,10 +43,14 @@ const productSlice = createSlice({
         },
         deleteCartItem : (state: IProductRootState, {payload}: PayloadAction<number>) => {
             state.cart = state.cart.filter(product => product.id !== payload)
+        },
+
+        updateSearchQuery: (state: IProductRootState, {payload}: PayloadAction<string>) => {
+            state.searchQuery = payload;
         }
     }
 })
 
-export const {addProduct,changeQuantity, deleteCartItem} = productSlice.actions;
+export const {addProduct,changeQuantity, deleteCartItem,updateSearchQuery} = productSlice.actions;
 
 export default productSlice.reducer;

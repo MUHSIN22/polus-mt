@@ -1,7 +1,8 @@
 import { IProduct } from "../pages/products.types";
 
 export type IProductRootState = {
-    cart: ICartItem[]
+    cart: ICartItem[],
+    searchQuery: string;
 }
 
 export type ICartItem = IProduct & {
